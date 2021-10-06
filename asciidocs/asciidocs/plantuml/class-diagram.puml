@@ -1,0 +1,37 @@
+@startuml
+class Customer {
+- customerId: long
+- firstName: string
+- lastName: string
+- bookings: List<Booking>
+- contact: Employee
+}
+
+class Employee {
+- employeeId: long
+- firstName: string
+- lastName: string
+- customers: List<Customers>
+- responsibleForBookings: List<Bookings>
+}
+
+class Booking {
+- bookingId: long
+- flight: Flight
+- price: BigInt
+- dateOfBooking: LocalDateTime
+- isCancelled: bool
+}
+
+class Flight {
+- flightId: long
+- bookingsAvailable: int
+- flightDate: LocalDateTime
+- airport: string
+- destination: string
+}
+
+Customer "*" ---> "1" Employee
+Customer "1" ---> "*" Booking
+Booking "1" --up-> "*" Flight
+@enduml
