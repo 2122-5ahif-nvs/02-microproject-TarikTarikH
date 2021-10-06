@@ -21,6 +21,7 @@ class Booking {
 - price: BigInt
 - dateOfBooking: LocalDateTime
 - isCancelled: bool
+- bookedClass: string
 }
 
 class Flight {
