@@ -1,0 +1,45 @@
+@startuml
+left to right direction
+
+class Customer {
+    - customerId: Long
+    - firstName: String
+    - lastName: String
+    - booking: List<Booking>
+    - advice: Advice
+}
+
+class Employee {
+    - employeeId: Long
+    - firstName: String
+    - lastName: String
+    - hireDate: LocalDate
+}
+
+class Booking {
+    - bookingId: Long
+    - bookingDate: LocalDate
+    - price: BigDecimal
+    - travel: Travel
+}
+
+class Advice {
+    - adviceId: Long
+    - employee: Employee
+    - travel: Travel
+}
+
+class Travel {
+    - travelId: Long
+    - destination: String
+    - price: BigDecimal
+    - flightDate: LocalDate
+}
+
+
+Customer ---> Booking : "1" makes "*"
+Customer ---> Advice: "1" gets "*"
+Employee ---> Advice: "1" gives "*"
+Booking ---> Travel: "*" has "1"
+Advice ---> Travel: "*" has "1"
+@enduml

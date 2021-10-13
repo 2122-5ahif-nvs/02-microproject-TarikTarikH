@@ -1,0 +1,23 @@
+@startuml
+left to right direction
+scale 1024 width
+scale 768 height
+
+actor "Customer" as customer
+actor "Employee" as employee
+
+rectangle "Employee" {
+    usecase "get total sales of employee" as ucGetTotalSales
+    usecase "make offer based on criteria" as ucMakeOffer
+
+}
+rectangle "Customer" {
+    usecase "make booking" as ucMakeBooking
+    usecase "delete booking" as ucDeleteBooking
+}
+
+customer --- ucMakeBooking
+customer --- ucDeleteBooking
+employee --- ucGetTotalSales
+employee --- ucMakeOffer
+@enduml
