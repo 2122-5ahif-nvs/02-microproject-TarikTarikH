@@ -1,5 +1,7 @@
 package at.htl.travelagency.entities;
 
+import org.eclipse.microprofile.openapi.annotations.media.Schema;
+
 import javax.json.bind.annotation.JsonbTransient;
 import javax.persistence.*;
 import java.time.LocalDate;
@@ -11,11 +13,15 @@ import java.util.List;
         query = "select e from Employee e"
 )
 public class Employee {
+    @Schema(required = false)
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long employeeId;
+    @Schema(required = true)
     private String firstName;
+    @Schema(required = true)
     private String lastName;
+    @Schema(required = true)
     private LocalDate hireDate;
     @OneToMany(mappedBy = "employee")
     @JsonbTransient

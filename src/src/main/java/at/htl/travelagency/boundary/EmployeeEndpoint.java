@@ -65,6 +65,10 @@ public class EmployeeEndpoint {
         return Response.ok().build();
     }
 
+    @Operation(
+            summary = "Deletes an employee",
+            description = "Deletes an employee based on an id passed through a query param"
+    )
     @DELETE
     @Path("delete-emp")
     public Response deleteEmpWithQueryParam(@QueryParam("id") Long id){
@@ -72,6 +76,10 @@ public class EmployeeEndpoint {
 
         return Response.ok().build();
     }
+    @Operation(
+            summary = "Creates and advice",
+            description = "Creates and advice based on the given customerId, employeeId, and destination."
+    )
     @POST
     @Path("create-advice/{customerId}/{employeeId}/{destination}")
     @Produces(MediaType.APPLICATION_JSON)
@@ -101,14 +109,6 @@ public class EmployeeEndpoint {
         return Response.ok().build();
     }
 
-    @GET
-    @Path("/calcualte-sales/{id}")
-    @Produces(MediaType.APPLICATION_JSON)
-    @Transactional
-    public BigDecimal calculateSales(@PathParam("id") int id){
-        return employeeRepository.calculateSales(Long.valueOf(id));
-    }
-
     @POST
     @Path("/insert-multiple-employees")
     @Consumes(MediaType.APPLICATION_JSON)
@@ -118,6 +118,22 @@ public class EmployeeEndpoint {
         return Response.ok(this.employeeRepository.saveEntities(employees).toArray()).build();
     }
 
+    @Operation(
+            summary = "Calculates the sales",
+            description = "Calculates the sales that an employee has made."
+    )
+    @GET
+    @Path("/calcualte-sales/{id}")
+    @Produces(MediaType.APPLICATION_JSON)
+    @Transactional
+    public BigDecimal calculateSales(@PathParam("id") int id){
+        return employeeRepository.calculateSales(Long.valueOf(id));
+    }
+
+    @Operation(
+            summary = "Update a firstname",
+            description = "Updates the firstname of an employee based on the given dto."
+    )
     @PATCH
     @Path("/update-firstname")
     @Consumes(MediaType.APPLICATION_JSON)
