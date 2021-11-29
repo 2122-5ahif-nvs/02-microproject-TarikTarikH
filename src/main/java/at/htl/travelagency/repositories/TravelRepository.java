@@ -14,4 +14,12 @@ public class TravelRepository  extends EntityRepository<Travel>{
     public Travel findAdviceByDestination(String destination){
         return this.find("destination", destination).firstResult();
     }
+
+    @Transactional
+    public void resetTable() {
+        this.deleteAll();
+        this.getEntityManager()
+                .createNativeQuery("ALTER TABLE db.public.travel ALTER COLUMN travelid RESTART WITH 1")
+                .executeUpdate();
+    }
 }

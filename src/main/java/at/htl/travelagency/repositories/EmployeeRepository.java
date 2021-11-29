@@ -40,4 +40,12 @@ public class EmployeeRepository extends EntityRepository<Employee>{
 
         return emp;
     }
+
+    @Transactional
+    public void resetTable() {
+        this.deleteAll();
+        this.getEntityManager()
+                .createNativeQuery("ALTER TABLE db.public.employee ALTER COLUMN employeeid RESTART WITH 1")
+                .executeUpdate();
+    }
 }
