@@ -1,0 +1,41 @@
+POST http://localhost:8080/employee-api/init
+
+###
+
+GET http://localhost:8080/employee-api/read-emps
+Accept: application/json
+
+###
+
+POST http://localhost:8080/employee-api/add-emp
+Content-Type:application/json
+
+{
+  "firstName": "Jim",
+  "lastName": "Downing",
+  "hireDate": "2016-12-11"
+}
+
+###
+
+DELETE http://localhost:8080/employee-api/delete-emp/42
+
+###
+
+POST http://localhost:8080/employee-api/create-advice/1/1/Tokyo
+
+### employee with id 1 creates advice
+
+POST http://localhost:8080/employee-api/create-advice/1/1/London
+
+### employee with id 2 creates advice
+
+POST http://localhost:8080/employee-api/create-advice/1/2/Tokyo
+
+### get sales of employee with id 1
+
+GET http://localhost:8080/employee-api/calcualte-sales/1
+
+### get sales of employee with id 2
+
+GET http://localhost:8080/employee-api/calcualte-sales/2

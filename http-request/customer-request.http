@@ -1,0 +1,33 @@
+GET http://localhost:8080/customer-api/init
+
+###
+
+GET http://localhost:8080/customer-api/read-customers
+Accept: application/json
+
+###
+
+POST http://localhost:8080/customer-api/create-customer
+Content-Type:application/json
+
+{
+  "employeeId": 1,
+  "firstName": "Customer",
+  "lastName": "One"
+}
+
+###
+
+DELETE http://localhost:8080/customer-api/delete-customer/1
+
+###
+
+POST http://localhost:8080/customer-api/create-Booking/1/2
+Content-Type:application/json
+
+{
+  "price": 200,
+  "bookingDate": "2020-12-19"
+}
+
+###
